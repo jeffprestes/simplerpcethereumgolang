@@ -18,7 +18,7 @@ var contract *eth.Contract
 
 func main() {
 
-	logFile, err := os.OpenFile("~/webserver.log", os.O_CREATE|os.O_APPEND|os.O_RDWR, 0666)
+	logFile, err := os.OpenFile(os.Getenv("LOGFILE"), os.O_CREATE|os.O_APPEND|os.O_RDWR, 0666)
 	if err != nil {
 		log.Fatalln(err.Error(), " - error creating log file")
 		return
