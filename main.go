@@ -33,7 +33,7 @@ func main() {
 	}
 
 	for _, acc := range accounts {
-		fmt.Println("Account: ", acc)
+		log.Println("Account: ", acc)
 	}
 
 	var abi string
@@ -44,13 +44,15 @@ func main() {
 		return
 	}
 
-	fmt.Println("Iniciando o servidor web...")
+	log.Println("Iniciando o servidor web...")
 	http.HandleFunc("/", executeContractMethod)
 	http.ListenAndServe(os.Getenv("WEB_IP")+":"+os.Getenv("WEB_PORT"), nil)
+	log.Println("Servidor web iniciado...")
 }
 
 func executeContractMethod(w http.ResponseWriter, r *http.Request) {
 
+	log.Println("Execute Contract Method called...")
 	fmt.Fprintln(w, "<html><head><title>Calling smart contract via web</title><head><body>")
 
 	transaction := new(dto.TransactionParameters)
@@ -74,4 +76,5 @@ func executeContractMethod(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "<h1>Owner: %+v </h1>\n", result.Result)
 	}
 	fmt.Fprintln(w, "</body></html>")
+	log.Println("Execute Contract Method finished")
 }
