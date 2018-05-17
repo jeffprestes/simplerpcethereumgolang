@@ -6,7 +6,6 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"time"
 
 	web3 "github.com/regcostajr/go-web3"
 	"github.com/regcostajr/go-web3/dto"
@@ -66,9 +65,7 @@ func main() {
 
 func executeContractMethod(w http.ResponseWriter, r *http.Request) {
 	log.SetOutput(mw)
-	t := time.Now()
-	agora := fmt.Sprintln(t.Format("20060102-150405"))
-	log.Println(agora, " Execute Contract Method called...")
+	log.Println(" Execute Contract Method called...")
 	fmt.Fprintln(w, "<html><head><title>Calling smart contract via web</title><head><body>")
 
 	transaction := new(dto.TransactionParameters)
@@ -92,7 +89,5 @@ func executeContractMethod(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "<h1>Owner: %+v </h1>\n", result.Result)
 	}
 	fmt.Fprintln(w, "</body></html>")
-	t = time.Now()
-	agora = fmt.Sprintln(t.Format("20060102-150405"))
-	log.Println(agora, " Execute Contract Method finished")
+	log.Println(" Execute Contract Method finished")
 }
