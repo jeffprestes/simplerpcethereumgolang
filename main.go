@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"io"
 	"log"
 	"net/http"
 	"os"
@@ -17,11 +18,19 @@ var contract *eth.Contract
 
 func main() {
 
+	logFile, err := os.OpenFile("~/webserver.log", os.O_CREATE|os.O_APPEND|os.O_RDWR, 0666)
+	if err != nil {
+		log.Fatalln(err.Error(), " - error creating log file")
+		return
+	}
+	mw := io.MultiWriter(os.Stdout, logFile)
+	log.SetOutput(mw)
+
 	client := web3.NewWeb3(providers.NewHTTPProvider(os.Getenv("ETH_IP")+":"+os.Getenv("ETH_PORT"), 30, false))
 	account := os.Getenv("ETH_ACCOUNT")
 	pass := os.Getenv("ETH_SENHA")
 
-	_, err := client.Personal.UnlockAccount(account, pass, 10)
+	_, err = client.Personal.UnlockAccount(account, pass, 10)
 	if err != nil {
 		log.Fatalln(err.Error(), " - error unlocking account")
 		return
