@@ -1,0 +1,55 @@
+{
+	"ImportPath": "github.com/jeffprestes/simplerpcethereumgolang",
+	"GoVersion": "go1.10",
+	"GodepVersion": "v79",
+	"Deps": [
+		{
+			"ImportPath": "github.com/regcostajr/go-web3",
+			"Rev": "8d023292e88b2d4ed401e33d2224cfb983e5f54d"
+		},
+		{
+			"ImportPath": "github.com/regcostajr/go-web3/complex/types",
+			"Rev": "8d023292e88b2d4ed401e33d2224cfb983e5f54d"
+		},
+		{
+			"ImportPath": "github.com/regcostajr/go-web3/constants",
+			"Rev": "8d023292e88b2d4ed401e33d2224cfb983e5f54d"
+		},
+		{
+			"ImportPath": "github.com/regcostajr/go-web3/dto",
+			"Rev": "8d023292e88b2d4ed401e33d2224cfb983e5f54d"
+		},
+		{
+			"ImportPath": "github.com/regcostajr/go-web3/eth",
+			"Rev": "8d023292e88b2d4ed401e33d2224cfb983e5f54d"
+		},
+		{
+			"ImportPath": "github.com/regcostajr/go-web3/eth/block",
+			"Rev": "8d023292e88b2d4ed401e33d2224cfb983e5f54d"
+		},
+		{
+			"ImportPath": "github.com/regcostajr/go-web3/net",
+			"Rev": "8d023292e88b2d4ed401e33d2224cfb983e5f54d"
+		},
+		{
+			"ImportPath": "github.com/regcostajr/go-web3/personal",
+			"Rev": "8d023292e88b2d4ed401e33d2224cfb983e5f54d"
+		},
+		{
+			"ImportPath": "github.com/regcostajr/go-web3/providers",
+			"Rev": "8d023292e88b2d4ed401e33d2224cfb983e5f54d"
+		},
+		{
+			"ImportPath": "github.com/regcostajr/go-web3/providers/util",
+			"Rev": "8d023292e88b2d4ed401e33d2224cfb983e5f54d"
+		},
+		{
+			"ImportPath": "github.com/regcostajr/go-web3/utils",
+			"Rev": "8d023292e88b2d4ed401e33d2224cfb983e5f54d"
+		},
+		{
+			"ImportPath": "golang.org/x/net/websocket",
+			"Rev": "d41e8174641f662c5a2d1c7a5f9e828788eb8706"
+		}
+	]
+}
