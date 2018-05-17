@@ -15,15 +15,19 @@ import (
 )
 
 var contract *eth.Contract
+var logFile *os.File
+var mw io.Writer
 
 func main() {
 
-	logFile, err := os.OpenFile(os.Getenv("LOGFILE"), os.O_CREATE|os.O_APPEND|os.O_RDWR, 0666)
+	var err error
+
+	logFile, err = os.OpenFile(os.Getenv("LOGFILE"), os.O_CREATE|os.O_APPEND|os.O_RDWR, 0666)
 	if err != nil {
 		log.Fatalln(err.Error(), " - error creating log file")
 		return
 	}
-	mw := io.MultiWriter(os.Stdout, logFile)
+	mw = io.MultiWriter(os.Stdout, logFile)
 	log.SetOutput(mw)
 
 	client := web3.NewWeb3(providers.NewHTTPProvider(os.Getenv("ETH_IP")+":"+os.Getenv("ETH_PORT"), 30, false))
@@ -61,6 +65,7 @@ func main() {
 }
 
 func executeContractMethod(w http.ResponseWriter, r *http.Request) {
+	log.SetOutput(mw)
 	t := time.Now()
 	agora := fmt.Sprintln(t.Format("20060102-150405"))
 	log.Println(agora, " Execute Contract Method called...")
